@@ -349,21 +349,25 @@ function SectionBuildLoop({ active }: SectionProps) {
 function SectionWhatWeBuild({ active }: SectionProps) {
   const stages = [
     {
+      num: '01',
       title: 'Learn',
       icon: GraduationCap,
       items: ['Technical courses', 'Workshops', 'Research discussions', 'Internal knowledge sharing'],
     },
     {
+      num: '02',
       title: 'Explore',
       icon: Search,
       items: ['Ideas', 'Technologies', 'Research problems', 'Experiments'],
     },
     {
+      num: '03',
       title: 'Build',
       icon: Wrench,
       items: ['Student projects', 'Software', 'AI/ML models', 'Websites', 'Games', 'Infrastructure/tools'],
     },
     {
+      num: '04',
       title: 'Share',
       icon: Handshake,
       items: ['Events', 'Demonstrations', 'Collaborations', 'Open-source work', 'Research'],
@@ -371,69 +375,56 @@ function SectionWhatWeBuild({ active }: SectionProps) {
   ];
 
   return (
-    <div className="section-frame" style={{ background: '#0a0a0a' }}>
-      <div className="relative w-full h-full flex flex-col justify-center px-12 md:px-20 py-12 overflow-hidden overflow-y-auto">
+    <div className="section-frame" style={{ background: '#ffffff' }}>
+      <div className="relative w-full h-full flex flex-col justify-center px-12 md:px-20 py-10 overflow-hidden overflow-y-auto">
 
-        <div className="w-full max-w-6xl mx-auto flex flex-col">
+        <div className="w-full max-w-7xl mx-auto flex flex-col">
           <span className={`chapter-label transition-all duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}
-            style={{ color: 'rgba(255,255,255,0.25)' }}>05 / WHAT WE DO</span>
+            style={{ color: '#999' }}>05 / WHAT WE DO</span>
 
-          <p className={`mt-4 text-sm max-w-xl transition-all duration-700 ${active ? 'opacity-100' : 'opacity-0'}`}
-            style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Arial', textTransform: 'none', lineHeight: 1.6, transitionDelay: '150ms' }}>
+          <p className={`mt-4 text-lg max-w-xl transition-all duration-700 ${active ? 'opacity-100' : 'opacity-0'}`}
+            style={{ color: 'rgba(0,0,0,0.5)', fontFamily: 'Arial', textTransform: 'none', lineHeight: 1.6, transitionDelay: '150ms' }}>
             How the club moves — from picking up skills to putting work out into the world.
           </p>
 
-          {/* Header row — same grid as the cards so each word sits over its box */}
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-            {stages.map((stage, i) => (
-              <div key={stage.title}
-                className={`flex items-center gap-3 transition-all duration-500 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}
-                style={{ transitionDelay: `${150 + i * 80}ms` }}>
-                <span className="geist-pixel text-xs" style={{ color: 'rgba(255,255,255,0.25)' }}>
-                  0{i + 1}
-                </span>
-                <h2 className="geist-pixel text-white" style={{ fontSize: 'clamp(1.4rem, 2.4vw, 2rem)', lineHeight: 1 }}>
-                  {stage.title.toUpperCase()}
-                </h2>
-                {i < stages.length - 1 && (
-                  <span className="ml-auto hidden lg:inline" style={{ color: 'rgba(255,255,255,0.25)', fontSize: '1.2rem' }}>→</span>
-                )}
-              </div>
-            ))}
-          </div>
+          <div className="mt-8 grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-14 items-center">
 
-          {/* Stage cards — same grid, so columns line up with the header */}
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 items-stretch">
-            {stages.map((stage, i) => {
-              const Icon = stage.icon;
-              return (
+            {/* Left: group photo */}
+            <div className={`relative overflow-hidden transition-all duration-700 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
+              style={{ borderRadius: 20, border: '1px solid rgba(0,0,0,0.1)', aspectRatio: '4/3.4', background: '#f0f0f0', transitionDelay: '200ms' }}>
+              <img src="/what-we-do-group.jpg" alt="BIUST Innovation Club members"
+                className="absolute inset-0 w-full h-full object-cover" />
+            </div>
+
+            {/* Right: stages stacked vertically, large type */}
+            <div className="flex flex-col divide-y" style={{ borderColor: 'rgba(0,0,0,0.1)' }}>
+              {stages.map((stage, i) => (
                 <div key={stage.title}
-                  className={`group flex flex-col border transition-all duration-500 hover:border-white/25 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-                  style={{ borderColor: 'rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.02)', transitionDelay: `${250 + i * 100}ms` }}>
-
-                  {/* Image placeholder — swap the inner content for <Image /> later */}
-                  <div className="relative m-3 mb-0 overflow-hidden border border-dashed flex flex-col items-center justify-center gap-2"
-                    style={{ aspectRatio: '16/10', borderColor: 'rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.03)' }}>
-                    <Icon size={28} style={{ color: 'rgba(255,255,255,0.25)' }} strokeWidth={1.2} />
-                    <span className="text-xs" style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'Arial', textTransform: 'none' }}>
-                      {stage.title} image
-                    </span>
-                    {/* e.g. <Image src="/stages/learn.jpg" alt="Learn" fill style={{ objectFit: 'cover' }} /> */}
+                  className={`flex items-start gap-5 py-5 transition-all duration-500 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
+                  style={{ transitionDelay: `${250 + i * 100}ms` }}>
+                  <span className="geist-pixel shrink-0 pt-2"
+                    style={{ color: 'rgba(0,0,0,0.3)', fontSize: '0.95rem', letterSpacing: '0.08em' }}>
+                    {stage.num}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="geist-pixel text-black"
+                      style={{ fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', lineHeight: 1 }}>
+                      {stage.title.toUpperCase()}
+                    </h3>
+                    <ul className="mt-3 flex flex-col gap-2">
+                      {stage.items.map((item) => (
+                        <li key={item} className="flex items-center gap-3"
+                          style={{ fontFamily: 'Arial', fontSize: 'clamp(1.05rem, 1.5vw, 1.35rem)', color: 'rgba(0,0,0,0.65)', lineHeight: 1.4 }}>
+                          <span className="shrink-0 rounded-full" style={{ width: 7, height: 7, background: 'rgba(0,0,0,0.3)' }} />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-
-                  {/* Points as pills */}
-                  <div className="p-4 flex flex-wrap gap-2 content-start flex-1">
-                    {stage.items.map((item) => (
-                      <span key={item}
-                        className="inline-flex items-center rounded-full border px-3 py-1.5 text-xs leading-none transition-colors duration-200 group-hover:border-white/20"
-                        style={{ borderColor: 'rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.65)', fontFamily: 'Arial', textTransform: 'none', letterSpacing: '0.01em' }}>
-                        {item}
-                      </span>
-                    ))}
-                  </div>
+                  {i < stages.length - 1 ? null : null}
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
 
@@ -941,10 +932,11 @@ function SectionWhoIsThisFor({ active }: SectionProps) {
   );
 }
 
-// ─── Section 12 : Final ───────────────────────────────────────────────────────
-function SectionFinal({ active }: SectionProps) {
+// ─── Section 12 : Finale (merged Final + Thank You) ────────────────────────────
+function SectionFinale({ active }: SectionProps) {
   const line1 = useTypingEffect("We don't just teach students how to build.", active, 40);
   const line2 = useTypingEffect('We give them a place to build.', line1.length > 30, 40);
+  const showLogo = active && line2.length > 20;
 
   return (
     <div className="section-frame" style={{ background: '#0a0a0a' }}>
@@ -968,22 +960,20 @@ function SectionFinal({ active }: SectionProps) {
           </p>
         </div>
 
-        {/* Logo + name */}
-        <div className={`mt-16 flex flex-col items-center transition-all duration-700 ${active && line2.length > 20 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+        {/* Logo + website block — appears once the quote finishes typing */}
+        <div className={`mt-8 flex flex-col items-center text-center transition-all duration-700 ${showLogo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           style={{ transitionDelay: '200ms' }}>
-          <Image src="/logos/trans-logo.png" alt="BIUST Innovation Club" width={56} height={56}
-            style={{ filter: 'invert(1) brightness(2)', objectFit: 'contain', marginBottom: '1.5rem' }} />
-
-          <h2 className="geist-pixel text-white text-center"
-            style={{ fontSize: 'clamp(1.5rem, 5vw, 4rem)', lineHeight: 0.9 }}>
-            BIUST<br />INNOVATION<br />CLUB
-          </h2>
-
-          <div className="mt-8 h-px w-16 bg-white/20" />
-
-          <p className="mt-6 geist-pixel text-white/40 text-xs tracking-widest">
-            LEARN · BUILD · RESEARCH · SHIP
-          </p>
+          <div className="flex flex-col items-center">
+            <Image src="/logos/biust logo2.png" alt="BIUST Innovation Club" width={260} height={260}
+              style={{ objectFit: 'contain', marginBottom: '1rem' }} />
+            <p className="geist-pixel text-white/40 text-xs tracking-widest">
+              LEARN · BUILD · RESEARCH · SHIP
+            </p>
+            <p className="mt-6 text-white text-center"
+              style={{ fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: 600, fontSize: 'clamp(1.8rem, 7vw, 6rem)', lineHeight: 1, letterSpacing: '-0.02em', wordBreak: 'break-all' }}>
+              biustinnovation.com
+            </p>
+          </div>
         </div>
 
       </div>
@@ -1005,23 +995,14 @@ function SectionThankYou({ active }: SectionProps) {
 
         <div className={`flex flex-col items-center text-center transition-all duration-700 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           style={{ transitionDelay: '150ms' }}>
-          <Image src="/logos/trans-logo.png" alt="BIUST Innovation Club" width={56} height={56}
-            style={{ filter: 'invert(1) brightness(2)', objectFit: 'contain', marginBottom: '2rem' }} />
-
           <h2 className="geist-pixel text-white"
-            style={{ fontSize: 'clamp(2.5rem, 8vw, 6rem)', lineHeight: 0.9 }}>
+            style={{ fontSize: 'clamp(1.8rem, 5vw, 3.5rem)', lineHeight: 0.9 }}>
             THANK YOU.
           </h2>
 
-          <p className="geist-pixel mt-6"
+          <p className="geist-pixel mt-4"
             style={{ fontSize: 'clamp(1rem, 3vw, 1.8rem)', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.06em' }}>
             ANY QUESTIONS?
-          </p>
-
-          <div className="mt-10 h-px w-16 bg-white/20" />
-
-          <p className="mt-6 geist-pixel text-white/40 text-xs tracking-widest">
-            LEARN · BUILD · RESEARCH · SHIP
           </p>
         </div>
 
@@ -1045,7 +1026,7 @@ function SectionCounter({ current, total, onPrev, onNext }: {
   current: number; total: number;
   onPrev: () => void; onNext: () => void;
 }) {
-  const isDark = [0, 2, 5, 7, 10, 11, 12, 13].includes(current);
+  const isDark = [0, 2, 7, 10, 11, 12, 13].includes(current);
   const color = isDark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.35)';
   const hoverBg = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)';
 
@@ -1175,7 +1156,7 @@ export default function Home() {
     <SectionPeople key={9} active={current === 9} />,
     <SectionNerds key={10} active={current === 10} />,
     <SectionWhoIsThisFor key={11} active={current === 11} />,
-    <SectionFinal key={12} active={current === 12} />,
+    <SectionFinale key={12} active={current === 12} />,
     <SectionThankYou key={13} active={current === 13} />,
   ];
 
