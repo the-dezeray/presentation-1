@@ -41,7 +41,7 @@ function SectionOpening({ active }: SectionProps) {
         }} />
 
         {/* Logo */}
-        <div className={`transition-all duration-700 mb-12 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+        <div className={`transition-all duration-300 mb-12 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           style={{ transitionDelay: '100ms' }}>
           <Image src="/logos/biust logo2.png" alt="BIUST Innovation Club" width={800} height={800}
             style={{ objectFit: 'contain' }} />
@@ -50,17 +50,17 @@ function SectionOpening({ active }: SectionProps) {
      
 
         {/* Divider */}
-        <div className={`my-8 h-px w-24 bg-white/30 transition-all duration-700 ${active ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}
+        <div className={`my-8 h-px w-24 bg-white/30 transition-all duration-300 ${active ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}
           style={{ transitionDelay: '500ms', transformOrigin: 'left' }} />
 
         {/* Tagline */}
-        <p className={`geist-pixel text-white/50 text-sm tracking-widest transition-all duration-700 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <p className={`geist-pixel text-white/50 text-sm tracking-widest transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ transitionDelay: '650ms' }}>
           LEARN · BUILD · RESEARCH · SHIP
         </p>
 
         {/* Bottom prompt */}
-        <div className={`absolute bottom-10 flex flex-col items-center gap-2 transition-all duration-700 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <div className={`absolute bottom-10 flex flex-col items-center gap-2 transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ transitionDelay: '900ms' }}>
           <span className="text-white/30 text-xs tracking-widest">PRESS ↓ TO EXPLORE</span>
           <div className="w-px h-8 bg-white/20 animate-pulse" />
@@ -91,14 +91,14 @@ function SectionGap({ active }: SectionProps) {
       <div className="relative w-full h-full flex flex-col justify-center px-12 md:px-24 overflow-hidden">
 
         {/* Chapter label */}
-        <span className={`chapter-label transition-all duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <span className={`chapter-label transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ color: '#999', transitionDelay: '0ms' }}>01 / THE GAP</span>
 
         {/* Two-column layout */}
         <div className="flex flex-col md:flex-row items-start md:items-center gap-12 md:gap-24 mt-6">
 
           {/* Left: the tension */}
-          <div className={`flex-1 transition-all duration-700 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
+          <div className={`flex-1 transition-all duration-300 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
             style={{ transitionDelay: '150ms' }}>
             <h2 className="geist-pixel text-black" style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', lineHeight: 0.9 }}>
               YOU LEARN<br />
@@ -111,14 +111,14 @@ function SectionGap({ active }: SectionProps) {
           </div>
 
           {/* Right: icon cards + gap message */}
-          <div className={`flex-1 transition-all duration-700 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
+          <div className={`flex-1 transition-all duration-300 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
             style={{ transitionDelay: '300ms' }}>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10 md:gap-x-8 md:gap-y-12 mb-12">
               {subjects.map((s, i) => {
                 const Icon = SubjectIcons[s];
                 return (
                   <div key={s}
-                    className={`flex flex-col items-center justify-center gap-5 transition-all duration-500 hover:scale-110 cursor-default ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}
+                    className={`flex flex-col items-center justify-center gap-5 transition-all duration-300 hover:scale-110 cursor-default ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}
                     style={{ transitionDelay: `${400 + i * 60}ms` }}>
                     {Icon && <Icon size={80} className="text-black/70" strokeWidth={1.2} />}
                     <span className="font-bold text-base text-center text-black/80" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>{s}</span>
@@ -147,6 +147,7 @@ function SectionGap({ active }: SectionProps) {
 const ABOUT_PHOTOS = [
   { src: '/club-photo.jpeg', alt: 'BIUST Innovation Club Members', label: 'THE CLUB' },
   { src: '/coding-session.jpg', alt: 'Members building together', label: 'BUILDING TOGETHER' },
+  { src: '/club-innovation-group.jpg', alt: 'Club members at BIUST Innovation session', label: 'INNOVATION SESSION' },
 ];
 
 function SectionAboutClub({ active }: SectionProps) {
@@ -156,7 +157,7 @@ function SectionAboutClub({ active }: SectionProps) {
   useEffect(() => {
     if (!active) return;
     setIdx(0);
-    const id = setInterval(() => setIdx((i) => (i + 1) % ABOUT_PHOTOS.length), 4000);
+    const id = setInterval(() => setIdx((i) => (i + 1) % ABOUT_PHOTOS.length), 2500);
     return () => clearInterval(id);
   }, [active]);
 
@@ -165,7 +166,7 @@ function SectionAboutClub({ active }: SectionProps) {
       <div className="relative w-full h-full flex items-center justify-center overflow-hidden rounded-3xl">
 
         {/* Animated photo stack — crossfade + slow Ken Burns zoom */}
-        <div className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ transitionDelay: '150ms' }}>
           <div className="relative w-full h-full overflow-hidden rounded-3xl bg-black">
             {ABOUT_PHOTOS.map((photo, i) => (
@@ -178,7 +179,7 @@ function SectionAboutClub({ active }: SectionProps) {
                 style={{
                   opacity: idx === i ? 1 : 0,
                   transform: idx === i ? 'scale(1.08)' : 'scale(1)',
-                  transition: 'opacity 1.2s ease-in-out, transform 5s ease-out',
+                  transition: 'opacity 0.6s ease-in-out, transform 3s ease-out',
                   zIndex: idx === i ? 1 : 0,
                 }}
               />
@@ -278,7 +279,7 @@ function SectionClub({ active }: SectionProps) {
       <div className="relative w-full h-full flex flex-col md:flex-row items-center justify-center px-12 md:px-24 overflow-hidden">
 
         {/* Text on the left */}
-        <div className={`flex-1 transition-all duration-700 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
+        <div className={`flex-1 transition-all duration-300 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
           style={{ transitionDelay: '150ms' }}>
           <div className="space-y-1">
             {lines.map((line, i) => (
@@ -297,7 +298,7 @@ function SectionClub({ active }: SectionProps) {
         </div>
 
         {/* Photo staircase on the right — real photos from /public/images-real */}
-        <div className={`flex flex-col items-end gap-3 transition-all duration-700 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
+        <div className={`flex flex-col items-end gap-3 transition-all duration-300 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
           style={{ transitionDelay: '300ms' }}>
           {[6, 5, 4, 3, 2, 1].map((count, rowIdx) => {
             const offset = [0, 6, 11, 15, 18, 20][rowIdx];
@@ -307,7 +308,7 @@ function SectionClub({ active }: SectionProps) {
                   const src = photos[offset + colIdx];
                   return (
                     <div key={colIdx}
-                      className={`overflow-hidden rounded-xl border border-white/15 bg-white/5 transition-all duration-500 hover:scale-105 hover:border-white/30 ${active ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+                      className={`overflow-hidden rounded-xl border border-white/15 bg-white/5 transition-all duration-300 hover:scale-105 hover:border-white/30 ${active ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
                       style={{ width: 72, height: 72, transitionDelay: `${350 + (offset + colIdx) * 40}ms` }}>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={src} alt="Club member"
@@ -321,7 +322,7 @@ function SectionClub({ active }: SectionProps) {
         </div>
 
         {/* Bottom accent */}
-        <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4 transition-all duration-700 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4 transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ transitionDelay: '700ms' }}>
           <div className="w-2 h-2 rounded-full bg-white" />
           <span className="text-white/40 text-sm tracking-wider" style={{ fontFamily: 'Arial', textTransform: 'uppercase' }}>
@@ -341,7 +342,7 @@ function SectionBuildLoop({ active }: SectionProps) {
 
   useEffect(() => {
     if (!active) { setTick(0); return; }
-    const id = setInterval(() => setTick(t => (t + 1) % steps.length), 1000);
+    const id = setInterval(() => setTick(t => (t + 1) % steps.length), 700);
     return () => clearInterval(id);
   }, [active, steps.length]);
 
@@ -349,14 +350,14 @@ function SectionBuildLoop({ active }: SectionProps) {
     <div className="section-frame" style={{ background: '#f5f0e8' }}>
       <div className="relative w-full h-full flex flex-col justify-center items-center px-8 overflow-hidden">
 
-        <span className={`chapter-label transition-all duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <span className={`chapter-label transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ color: '#999', marginBottom: '2rem' }}>04 / THE BUILD LOOP</span>
 
         {/* Active word — big */}
         <div className="relative flex items-center justify-center" style={{ height: '14rem' }}>
           {steps.map((step, i) => (
             <h2 key={step}
-              className="geist-pixel absolute text-center transition-all duration-500"
+              className="geist-pixel absolute text-center transition-all duration-300"
               style={{
                 fontSize: 'clamp(3rem, 10vw, 9rem)',
                 lineHeight: 1,
@@ -371,7 +372,7 @@ function SectionBuildLoop({ active }: SectionProps) {
         </div>
 
         {/* Step indicators */}
-        <div className={`flex items-center gap-3 mt-4 transition-all duration-700 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <div className={`flex items-center gap-3 mt-4 transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ transitionDelay: '200ms' }}>
           {steps.map((step, i) => (
             <button key={step} onClick={() => setTick(i)}
@@ -390,7 +391,7 @@ function SectionBuildLoop({ active }: SectionProps) {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-black/10" />
 
         {/* Back-to-start arrow */}
-        <div className={`mt-8 text-black/30 text-sm transition-all duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <div className={`mt-8 text-black/30 text-sm transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ transitionDelay: '400ms', fontFamily: 'Arial', textTransform: 'none' }}>
           ↩ then you learn something new
         </div>
@@ -453,10 +454,10 @@ function SectionWhatWeBuild({ active }: SectionProps) {
       <div className="relative w-full h-full flex flex-col justify-center px-12 md:px-20 py-10 overflow-hidden overflow-y-auto">
 
         <div className="w-full max-w-7xl mx-auto flex flex-col">
-          <span className={`chapter-label transition-all duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}
+          <span className={`chapter-label transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
             style={{ color: '#999' }}>05 / WHAT WE DO</span>
 
-          <p className={`mt-4 text-lg max-w-xl transition-all duration-700 ${active ? 'opacity-100' : 'opacity-0'}`}
+          <p className={`mt-4 text-lg max-w-xl transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
             style={{ color: 'rgba(0,0,0,0.5)', fontFamily: 'Arial', textTransform: 'none', lineHeight: 1.6, transitionDelay: '150ms' }}>
             How the club moves — from picking up skills to putting work out into the world.
           </p>
@@ -464,7 +465,7 @@ function SectionWhatWeBuild({ active }: SectionProps) {
           <div className="mt-8 grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-14 items-center">
 
             {/* Left: group photo */}
-            <div className={`relative overflow-hidden transition-all duration-700 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
+            <div className={`relative overflow-hidden transition-all duration-300 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
               style={{ borderRadius: 20, border: '1px solid rgba(0,0,0,0.1)', aspectRatio: '4/3.4', background: '#f0f0f0', transitionDelay: '200ms' }}>
               <img src="/what-we-do-group.jpg" alt="BIUST Innovation Club members"
                 className="absolute inset-0 w-full h-full object-cover" />
@@ -474,7 +475,7 @@ function SectionWhatWeBuild({ active }: SectionProps) {
             <div className="flex flex-col divide-y" style={{ borderColor: 'rgba(0,0,0,0.1)' }}>
               {stages.map((stage, i) => (
                 <div key={stage.title}
-                  className={`flex items-start gap-5 py-5 transition-all duration-500 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
+                  className={`flex items-start gap-5 py-5 transition-all duration-300 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
                   style={{ transitionDelay: `${250 + i * 100}ms` }}>
                   <span className="geist-pixel shrink-0 pt-2"
                     style={{ color: 'rgba(0,0,0,0.3)', fontSize: '0.95rem', letterSpacing: '0.08em' }}>
@@ -521,13 +522,13 @@ function SectionCollaboration({ active }: SectionProps) {
     <div className="section-frame" style={{ background: '#f5f0e8' }}>
       <div className="relative w-full h-full flex flex-col justify-center px-12 md:px-24 overflow-hidden">
 
-        <span className={`chapter-label transition-all duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <span className={`chapter-label transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ color: '#999' }}>06 / REAL-WORLD IMPACT</span>
 
         <div className="flex flex-col md:flex-row items-start gap-12 md:gap-20 mt-8">
 
           {/* Left: statement */}
-          <div className={`md:w-2/5 transition-all duration-700 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+          <div className={`md:w-2/5 transition-all duration-300 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
             style={{ transitionDelay: '100ms' }}>
             <h2 className="geist-pixel text-black" style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)', lineHeight: 0.9 }}>
               WE BUILD FOR<br />PEOPLE<br />AROUND US.
@@ -541,7 +542,7 @@ function SectionCollaboration({ active }: SectionProps) {
           <div className="md:w-3/5 space-y-0">
             {orgs.map((org, i) => (
               <div key={org.name}
-                className={`flex items-center justify-between border-b py-4 transition-all duration-500 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
+                className={`flex items-center justify-between border-b py-4 transition-all duration-300 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
                 style={{ borderColor: 'rgba(0,0,0,0.1)', transitionDelay: `${200 + i * 80}ms` }}>
                 <div className="flex items-center gap-4">
                   {/* Logo placeholder */}
@@ -633,7 +634,7 @@ function SectionResearch({ active }: SectionProps) {
       <div className="relative w-full h-full flex flex-col px-12 md:px-20 py-10 overflow-hidden">
 
         {/* Top bar */}
-        <div className={`flex items-center justify-between transition-all duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`flex items-center justify-between transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}>
           <span className="chapter-label" style={{ color: '#333' }}>07 / PROJECTS WE'RE WORKING ON</span>
           <span className="geist-pixel text-xs" style={{ color: 'rgba(255,255,255,0.3)', letterSpacing: '0.12em' }}>
             {String(idx + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
@@ -644,7 +645,7 @@ function SectionResearch({ active }: SectionProps) {
         <div className="flex-1 flex flex-col md:flex-row gap-8 md:gap-12 min-h-0 mt-6">
 
           {/* Left: project identity */}
-          <div className={`md:w-[30%] shrink-0 flex flex-col justify-center transition-all duration-500 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-6'}`}
+          <div className={`md:w-[30%] shrink-0 flex flex-col justify-center transition-all duration-300 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-6'}`}
             style={{ transitionDelay: '100ms' }}>
             <div className="flex items-center gap-3 mb-4">
               <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
@@ -663,7 +664,7 @@ function SectionResearch({ active }: SectionProps) {
           </div>
 
           {/* Right: large media, never overlapping the text */}
-          <div className={`flex-1 min-h-0 flex items-stretch justify-end transition-all duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}
+          <div className={`flex-1 min-h-0 flex items-stretch justify-end transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
             style={{ transitionDelay: '200ms' }}>
             <div key={idx} className="relative w-full overflow-hidden rounded-xl border"
               style={{ borderColor: 'rgba(255,255,255,0.12)', background: '#000', minHeight: '300px' }}>
@@ -682,7 +683,7 @@ function SectionResearch({ active }: SectionProps) {
         </div>
 
         {/* Lower zone: detail strip, separated by a divider */}
-        <div className={`mt-6 pt-5 transition-all duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <div className={`mt-6 pt-5 transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ borderTop: '1px solid rgba(255,255,255,0.08)', transitionDelay: '300ms' }}>
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <p style={{ fontFamily: 'Arial', color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', textTransform: 'none', lineHeight: 1.65, maxWidth: '62ch' }}>
@@ -729,7 +730,7 @@ function SectionInfrastructure({ active }: SectionProps) {
       <div className="relative w-full h-full flex flex-col justify-center px-12 md:px-20 overflow-hidden">
 
         {/* Laptop ↔ Server animation */}
-        <div className={`absolute top-8 right-12 transition-all duration-700 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <div className={`absolute top-8 right-12 transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ transitionDelay: '400ms' }}>
           <svg width="220" height="100" viewBox="0 0 220 100" fill="none">
             {/* Laptop */}
@@ -782,10 +783,10 @@ function SectionInfrastructure({ active }: SectionProps) {
           </svg>
         </div>
 
-        <span className={`chapter-label transition-all duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <span className={`chapter-label transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ color: '#999', fontSize: '0.85rem' }}>08 / BUILDER'S TOOLBOX</span>
 
-        <div className={`mt-6 mb-10 transition-all duration-700 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+        <div className={`mt-6 mb-10 transition-all duration-300 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           style={{ transitionDelay: '100ms' }}>
           <h2 className="geist-pixel text-black" style={{ fontSize: 'clamp(2.2rem, 5vw, 4.5rem)', lineHeight: 0.9 }}>
             YOU BRING THE IDEA.<br />
@@ -794,13 +795,13 @@ function SectionInfrastructure({ active }: SectionProps) {
         </div>
 
         {/* Pipeline */}
-        <div className={`flex items-stretch gap-0 max-w-5xl transition-all duration-700 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <div className={`flex items-stretch gap-0 max-w-5xl transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ transitionDelay: '300ms' }}>
           {stack.map((step, i) => {
             const Icon = step.icon;
             return (
               <div key={step.label}
-                className={`flex-1 transition-all duration-500 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+                className={`flex-1 transition-all duration-300 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
                 style={{ transitionDelay: `${300 + i * 80}ms` }}>
                 <div className="flex flex-col h-full border-r last:border-r-0"
                   style={{ borderColor: 'rgba(0,0,0,0.1)' }}>
@@ -838,7 +839,7 @@ function SectionInfrastructure({ active }: SectionProps) {
         </div>
 
         {/* Arrow connector */}
-        <div className={`mt-6 flex items-center gap-2 text-black/40 transition-all duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <div className={`mt-6 flex items-center gap-2 text-black/40 transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ fontFamily: 'Arial', transitionDelay: '800ms', textTransform: 'none' }}>
           <Rocket size={20} strokeWidth={1.2} className="text-black/30" />
           <span className="text-lg">Deployment assistance and technical guidance also available</span>
@@ -868,7 +869,7 @@ function SectionPeople({ active }: SectionProps) {
     <div className="section-frame" style={{ background: '#f5f0e8' }}>
       <div className="relative w-full h-full flex flex-col justify-center px-12 md:px-10 overflow-hidden">
 
-        <span className={`chapter-label transition-all duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <span className={`chapter-label transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ color: '#999', fontSize: '0.85rem' }}>09 / WE BUILD PEOPLE</span>
 
         <div className="mt-4 flex flex-col lg:flex-row gap-8 items-stretch max-w-6xl">
@@ -878,13 +879,13 @@ function SectionPeople({ active }: SectionProps) {
             <div className="grid grid-cols-2 gap-3 mt-10">
               {['/1.jpeg', '/2.jpg'].map((src, i) => (
                 <div key={src}
-                  className={`overflow-hidden transition-all duration-700 hover:scale-[1.02] ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+                  className={`overflow-hidden transition-all duration-300 hover:scale-[1.02] ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
                   style={{ borderRadius: 20, border: '1px solid rgba(0,0,0,0.12)', height: 'clamp(210px, 30vh, 360px)', transitionDelay: `${250 + i * 100}ms` }}>
                   <img src={src} alt="BIUST graduate" className="w-full h-full object-cover" style={{ objectPosition: '50% 12%' }} />
                 </div>
               ))}
               <div
-                className={`overflow-hidden transition-all duration-700 hover:scale-[1.02] ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+                className={`overflow-hidden transition-all duration-300 hover:scale-[1.02] ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
                 style={{ borderRadius: 20, border: '1px solid rgba(0,0,0,0.12)', height: 'clamp(210px, 30vh, 360px)', transitionDelay: '450ms' }}>
                 <img src="/3.jpeg" alt="BIUST graduate" className="w-full h-full object-cover" style={{ objectPosition: '50% 12%' }} />
               </div>
@@ -894,7 +895,7 @@ function SectionPeople({ active }: SectionProps) {
           </div>
 
           {/* RIGHT — message */}
-          <div className={`flex-[0.6] flex flex-col justify-center transition-all duration-700 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-6'}`}
+          <div className={`flex-[0.6] flex flex-col justify-center transition-all duration-300 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-6'}`}
             style={{ transitionDelay: '200ms' }}>
             <h2 className="geist-pixel text-black" style={{ fontSize: 'clamp(1.8rem, 3.6vw, 3.2rem)', lineHeight: 0.9 }}>
               THE GOAL IS SIMPLE<br />PICK UP NEW SKILLS.<br />
@@ -928,11 +929,11 @@ function SectionNerds({ active }: SectionProps) {
     <div className="section-frame" style={{ background: '#f5f0e8' }}>
       <div className="relative w-full h-full flex flex-col justify-between items-center px-8 md:px-24 overflow-hidden">
 
-        <span className={`chapter-label transition-all duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <span className={`chapter-label transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ color: '#999' }}>10 / WE'RE NERDS</span>
 
         {/* Text block */}
-        <div className={`text-center transition-all duration-700 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+        <div className={`text-center transition-all duration-300 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           style={{ transitionDelay: '100ms' }}>
           <h2 className="geist-pixel text-black mb-4"
             style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.5rem)', lineHeight: 0.9, letterSpacing: '0.03em' }}>
@@ -944,7 +945,7 @@ function SectionNerds({ active }: SectionProps) {
         </div>
 
         {/* Media grid */}
-        <div className={`grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-6 flex-1 w-full justify-center transition-all duration-700 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+        <div className={`grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-6 flex-1 w-full justify-center transition-all duration-300 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           style={{ transitionDelay: '400ms', minHeight: 0 }}>
 
           {mediaItems.map((item, i) => (
@@ -975,13 +976,13 @@ function SectionWhoIsThisFor({ active }: SectionProps) {
     <div className="section-frame" style={{ background: '#0a0a0a' }}>
       <div className="relative w-full h-full flex flex-col justify-center px-12 md:px-24 overflow-hidden">
 
-        <span className={`chapter-label transition-all duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}
+        <span className={`chapter-label transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ color: '#333' }}>11 / WHO IS THIS FOR?</span>
 
         <div className="flex flex-col md:flex-row items-start gap-16 mt-8">
 
           {/* Left */}
-          <div className={`md:w-2/5 transition-all duration-700 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+          <div className={`md:w-2/5 transition-all duration-300 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
             style={{ transitionDelay: '100ms' }}>
             <h2 className="geist-pixel text-white" style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)', lineHeight: 0.9 }}>
               YOU DON&apos;T NEED<br />TO KNOW<br />EVERYTHING.
@@ -994,7 +995,7 @@ function SectionWhoIsThisFor({ active }: SectionProps) {
           </div>
 
           {/* Right: student image */}
-          <div className={`md:w-3/5 flex items-center justify-center transition-all duration-700 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+          <div className={`md:w-3/5 flex items-center justify-center transition-all duration-300 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
             style={{ transitionDelay: '300ms' }}>
             <img src="/STUDENT.svg" alt="Student"
               className="w-full max-w-md h-auto" />
@@ -1008,8 +1009,8 @@ function SectionWhoIsThisFor({ active }: SectionProps) {
 
 // ─── Section 12 : Finale (merged Final + Thank You) ────────────────────────────
 function SectionFinale({ active }: SectionProps) {
-  const line1 = useTypingEffect("We don't just teach students how to build.", active, 40);
-  const line2 = useTypingEffect('We give them a place to build.', line1.length > 30, 40);
+  const line1 = useTypingEffect("We don't just teach students how to build.", active, 18);
+  const line2 = useTypingEffect('We give them a place to build.', line1.length > 30, 18);
   const showLogo = active && line2.length > 20;
 
   return (
@@ -1023,7 +1024,7 @@ function SectionFinale({ active }: SectionProps) {
         }} />
 
         {/* Typewriter quote */}
-        <div className={`text-center max-w-2xl transition-all duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`text-center max-w-2xl transition-all duration-300 ${active ? 'opacity-100' : 'opacity-0'}`}>
           <p className="text-white/40 text-lg mb-2 min-h-[1.8rem]"
             style={{ fontFamily: 'Arial', textTransform: 'none', fontStyle: 'italic' }}>
             {line1}<span className={line1.length > 0 && line1.length < 44 ? 'animate-blink' : 'hidden'}>|</span>
@@ -1035,7 +1036,7 @@ function SectionFinale({ active }: SectionProps) {
         </div>
 
         {/* Logo + website block — appears once the quote finishes typing */}
-        <div className={`mt-8 flex flex-col items-center text-center transition-all duration-700 ${showLogo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+        <div className={`mt-8 flex flex-col items-center text-center transition-all duration-300 ${showLogo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           style={{ transitionDelay: '200ms' }}>
           <div className="flex flex-col items-center">
             <Image src="/logos/biust logo2.png" alt="BIUST Innovation Club" width={260} height={260}
@@ -1067,7 +1068,7 @@ function SectionThankYou({ active }: SectionProps) {
           backgroundSize: '48px 48px',
         }} />
 
-        <div className={`flex flex-col items-center text-center transition-all duration-700 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+        <div className={`flex flex-col items-center text-center transition-all duration-300 ${active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           style={{ transitionDelay: '150ms' }}>
           <h2 className="geist-pixel text-white"
             style={{ fontSize: 'clamp(1.8rem, 5vw, 3.5rem)', lineHeight: 0.9 }}>
@@ -1089,7 +1090,7 @@ function SectionThankYou({ active }: SectionProps) {
 function ProgressBar({ current, total }: { current: number; total: number }) {
   return (
     <div className="fixed top-0 left-0 right-0 h-0.5 z-50 bg-white/5">
-      <div className="h-full bg-white/40 transition-all duration-500"
+      <div className="h-full bg-white/40 transition-all duration-300"
         style={{ width: `${((current + 1) / total) * 100}%` }} />
     </div>
   );
@@ -1169,7 +1170,7 @@ export default function Home() {
     setAnimating(true);
     setCurrent(idx);
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => setAnimating(false), 800);
+    timeoutRef.current = setTimeout(() => setAnimating(false), 450);
   }, [animating]);
 
   const prev = useCallback(() => goTo(current - 1), [current, goTo]);
@@ -1193,7 +1194,7 @@ export default function Home() {
       if (e.deltaY > 30) next();
       else if (e.deltaY < -30) prev();
       debounce = true;
-      setTimeout(() => { debounce = false; }, 900);
+      setTimeout(() => { debounce = false; }, 550);
       lastY = e.deltaY;
     };
     window.addEventListener('wheel', onWheel, { passive: false });
@@ -1247,7 +1248,7 @@ export default function Home() {
             className="absolute inset-0 transition-all"
             style={{
               transform: i < current ? 'translateY(-100%)' : i > current ? 'translateY(100%)' : 'translateY(0)',
-              transition: 'transform 0.75s cubic-bezier(0.76, 0, 0.24, 1)',
+              transition: 'transform 0.45s cubic-bezier(0.76, 0, 0.24, 1)',
               zIndex: i === current ? 10 : i === current - 1 ? 9 : 1,
             }}>
             {section}
