@@ -1,26 +1,138 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: 'GeistPixel';
+    src: url('/fonts/GeistPixel/ttf/GeistPixel-Square.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #e3e3db;
+    --foreground: #000000;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+    height: 100%;
+    overflow: hidden;
+    background: #0a0a0a;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Prevent default text-transform from base styles */
+p, span, a, li, div {
+    text-transform: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ── Pixel font ─────────────────────────────────────────────────── */
+.geist-pixel {
+    font-family: 'GeistPixel', monospace;
+    font-weight: 900;
+}
+
+/* ── Section frame ──────────────────────────────────────────────── */
+.section-frame {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* ── Chapter label ──────────────────────────────────────────────── */
+.chapter-label {
+    font-family: 'GeistPixel', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+/* ── Subject chip ───────────────────────────────────────────────── */
+.subject-chip {
+    display: inline-block;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.04);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.55);
+    letter-spacing: 0.02em;
+    text-transform: none;
+}
+
+/* ── Nav pill button ─────────────────────────────────────────────── */
+.nav-pill-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    transition: opacity 0.2s, background 0.2s;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-pill-btn:hover:not(:disabled) {
+    filter: brightness(1.4);
+}
+
+.nav-pill-btn:disabled {
+    cursor: default;
+    pointer-events: none;
+}
+
+/* ── Blink cursor ────────────────────────────────────────────────── */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+.animate-blink {
+    animation: blink 0.9s step-end infinite;
+}
+
+/* ── Fade in ─────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Pulse ───────────────────────────────────────────────────────── */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ── Responsive adjustments ─────────────────────────────────────── */
+@media (max-width: 640px) {
+    .chapter-label {
+        font-size: 0.6rem;
+    }
 }
