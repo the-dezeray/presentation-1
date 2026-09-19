@@ -204,6 +204,30 @@ function SectionClub({ active }: SectionProps) {
     { text: 'Learn from one another.', icon: GraduationCap },
   ];
 
+  const photos = [
+    '/images-real/1749915510998.jpg',
+    '/images-real/53b1b853-ec32-4ddb-baa6-ce7234f62075.jpg',
+    '/images-real/ab6ea2d3-23b3-40aa-ba53-533daa1d43ce.jpg',
+    '/images-real/es.webp',
+    '/images-real/IMG-20260724-WA0009.jpg',
+    '/images-real/karabo.webp',
+    '/images-real/lum.webp',
+    '/images-real/oga.webp',
+    '/images-real/p.webp',
+    '/images-real/pk.webp',
+    '/images-real/pol.webp',
+    '/images-real/ross.webp',
+    '/images-real/s.webp',
+    '/images-real/images%20(7).jpg',
+    '/images-real/IMG_3197%20-%20Sandile%20Siakayuwa.jpg',
+    '/images-real/IMG_3705%20-%20Tlotlang%20Morebodi.jpg',
+    '/images-real/IMG_8793%20-%20Theo%20Mothuti.jpg',
+    '/images-real/20260321_185720%20-%20Karl.webp',
+    '/images-real/20260916_140458%20-%20Shezzane%20Zendanemako.webp',
+    '/images-real/IMG_20260228_175745_171%20-%20Oarabile%20Koore.webp',
+    '/images-real/IMG-20260501-WA0014%20-%20Simeon%20Uden.webp',
+  ];
+
   return (
     <div className="section-frame" style={{ background: '#111' }}>
       <div className="relative w-full h-full flex flex-col md:flex-row items-center justify-center px-12 md:px-24 overflow-hidden">
@@ -227,23 +251,28 @@ function SectionClub({ active }: SectionProps) {
           </div>
         </div>
 
-        {/* Staircase grid on the right */}
+        {/* Photo staircase on the right — real photos from /public/images-real */}
         <div className={`flex flex-col items-end gap-3 transition-all duration-700 ${active ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
           style={{ transitionDelay: '300ms' }}>
-          {[6, 5, 4, 3, 2, 1].map((count, rowIdx) => (
-            <div key={count} className="flex gap-3">
-              {Array.from({ length: count }).map((_, colIdx) => {
-                const Icon = lines[rowIdx].icon;
-                return (
-                  <div key={colIdx}
-                    className="flex items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 cursor-default transition-all duration-300"
-                    style={{ width: 32, height: 32 }}>
-                    <Icon size={20} className="text-white/40" strokeWidth={1.2} />
-                  </div>
-                );
-              })}
-            </div>
-          ))}
+          {[6, 5, 4, 3, 2, 1].map((count, rowIdx) => {
+            const offset = [0, 6, 11, 15, 18, 20][rowIdx];
+            return (
+              <div key={count} className="flex gap-3">
+                {Array.from({ length: count }).map((_, colIdx) => {
+                  const src = photos[offset + colIdx];
+                  return (
+                    <div key={colIdx}
+                      className={`overflow-hidden rounded-xl border border-white/15 bg-white/5 transition-all duration-500 hover:scale-105 hover:border-white/30 ${active ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+                      style={{ width: 72, height: 72, transitionDelay: `${350 + (offset + colIdx) * 40}ms` }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={src} alt="Club member"
+                        className="w-full h-full object-cover" loading="lazy" />
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
         </div>
 
         {/* Bottom accent */}
