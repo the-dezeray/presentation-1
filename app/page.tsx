@@ -144,26 +144,49 @@ function SectionGap({ active }: SectionProps) {
 }
 
 // ─── Section 2 : About The Club ───────────────────────────────────────────────
+const ABOUT_PHOTOS = [
+  { src: '/club-photo.jpeg', alt: 'BIUST Innovation Club Members', label: 'THE CLUB' },
+  { src: '/coding-session.jpg', alt: 'Members building together', label: 'BUILDING TOGETHER' },
+];
+
 function SectionAboutClub({ active }: SectionProps) {
+  const [idx, setIdx] = useState(0);
+
+  // Auto-cycle photos while this section is active
+  useEffect(() => {
+    if (!active) return;
+    setIdx(0);
+    const id = setInterval(() => setIdx((i) => (i + 1) % ABOUT_PHOTOS.length), 4000);
+    return () => clearInterval(id);
+  }, [active]);
+
   return (
     <div className="section-frame" style={{ background: '#ffffff' }}>
       <div className="relative w-full h-full flex items-center justify-center overflow-hidden rounded-3xl">
 
-        {/* Photo taking full space with overlay + text */}
+        {/* Animated photo stack — crossfade + slow Ken Burns zoom */}
         <div className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ${active ? 'opacity-100' : 'opacity-0'}`}
           style={{ transitionDelay: '150ms' }}>
-          <div className="relative w-full h-full overflow-hidden rounded-3xl">
-            <Image
-              src="/club-photo.jpeg"
-              alt="BIUST Innovation Club Members"
-              fill
-              style={{ objectFit: 'cover' }}
-              priority
-            />
+          <div className="relative w-full h-full overflow-hidden rounded-3xl bg-black">
+            {ABOUT_PHOTOS.map((photo, i) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={photo.src}
+                src={photo.src}
+                alt={photo.alt}
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{
+                  opacity: idx === i ? 1 : 0,
+                  transform: idx === i ? 'scale(1.08)' : 'scale(1)',
+                  transition: 'opacity 1.2s ease-in-out, transform 5s ease-out',
+                  zIndex: idx === i ? 1 : 0,
+                }}
+              />
+            ))}
             {/* Dark overlay */}
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-black/40 z-[2]" />
 
-            {/* White text on top of the photo - bottom right */}
+            {/* White text on top of the photo - bottom left */}
             <div className="absolute bottom-10 left-10 flex flex-col items-start text-left px-12 py-12 z-10">
               <div className="flex items-center gap-4 mb-4">
                 <Users className="text-white/80" size={64} />
@@ -183,6 +206,28 @@ function SectionAboutClub({ active }: SectionProps) {
               <span className="text-white/50 text-sm tracking-widest" style={{ fontFamily: 'Arial', textTransform: 'uppercase' }}>
                 Research · Development · Community
               </span>
+            </div>
+
+            {/* Slideshow controls — bottom right */}
+            <div className="absolute bottom-8 right-8 z-10 flex flex-col items-end gap-3">
+              <span key={idx} className="geist-pixel text-white/70 text-xs tracking-widest">
+                {ABOUT_PHOTOS[idx].label}
+              </span>
+              <div className="flex items-center gap-2">
+                {ABOUT_PHOTOS.map((photo, i) => (
+                  <button
+                    key={photo.src}
+                    onClick={() => setIdx(i)}
+                    aria-label={`Show photo ${i + 1}`}
+                    className="rounded-full border-none cursor-pointer p-0 transition-all duration-300"
+                    style={{
+                      width: i === idx ? 24 : 8,
+                      height: 8,
+                      background: i === idx ? '#fff' : 'rgba(255,255,255,0.35)',
+                    }}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
